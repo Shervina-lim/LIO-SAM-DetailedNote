@@ -1,7 +1,8 @@
 # LIO-SAM-DetailedNote
 LIO-SAM源码详细注释，3D SLAM融合激光、IMU、GPS，因子图优化。
+LIO-SAM code explained, 3D slam with lidar, imu, gps and factor graph optimization.
 
-LIO-SAM的代码十分轻量，只有四个cpp文件，很值得读一读呢。
+LIO-SAM的代码十分轻量，只有四个cpp文件，很值得读一读呢。code is very light, only have 4 cpp files, worth a read.
 
 关于LIO-SAM的论文解读，网上已经有很多文章啦，同系列的LOAM、A-LOAM、LEGO-LOAM等，在网上都可以找到相关的解读文章。所以本文旨在对源代码进行阅读学习，积累一些工程上的经验。这里记录下来，希望可以帮到有需要的同学，如有错误的地方，请您批评指正。
 
@@ -32,6 +33,10 @@ LIO-SAM的代码十分轻量，只有四个cpp文件，很值得读一读呢。
 
 5、闭环检测。在历史关键帧中找候选闭环匹配帧，执行scan-to-map匹配，得到位姿变换，构建闭环因子，加入到因子图中一并优化。
 
+eng:
+
+1. Lidar correction. Using imu odometer data between each time stamp to pre calculate points. Then, using lidar pointclouds and compare it with the pre calculated points from imu and do correction. 
+2. Collect the corrected points and  
 ## 一、激光运动畸变校正（ImageProjection）
 
 **功能简介**
